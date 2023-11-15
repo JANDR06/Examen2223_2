@@ -21,9 +21,13 @@
 
 package exercises;
 
+import java.util.Scanner;
+
 public class Ejercicio3 {
 
     public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
 
         String[][] personas = {{"RAMON", "1,81"}, {"LUCIA", "1,67"}, {"ALEX", "1,98"},
                 {"PEDRO", "1,29"}, {"MIRIAM", "1,71"}};
@@ -33,10 +37,29 @@ public class Ejercicio3 {
 
         System.out.println();
         System.out.print("Nombre de la persona: ");
-        String persona = search(personas,);
-        System.out.println(persona);
+        String persona = sc.next();
+
+        int posicion = search(personas, persona);
+
+        if (posicion == -1) {
+            System.out.println("Persona no encontrada");
+        } else {
+            System.out.println("Altura encontrada: " + personas[posicion][1]);
+        }
+
 
     }
+
+        /*
+    public static void bubble(int[] array) {
+        int i, j;
+        for (i = 1; i < array.length; i++)
+            for(j = 0; j < array.length - 1; j++)
+                if(array[j]>array[j+1])
+                    swap(array, j, j + 1);
+    }
+
+     */
 
     public static void bubble(String[][] array) {
         int i, j;
@@ -49,6 +72,14 @@ public class Ejercicio3 {
         }
     }
 
+    /*
+    public static void swap(String[] array, int i, int j){
+        String aux = array[j];
+        array[j] = array[i];
+        array[i] = aux;
+    }
+     */
+
     public static void swap(String[][] matriz, int x, int y) {
         String aux = matriz[x][0];
         matriz[x][0] = matriz[y][0];
@@ -59,52 +90,20 @@ public class Ejercicio3 {
         matriz[y][1] = aux2;
     }
 
-    private static String search(String[][] array, float height) {
+    private static int search(String[][] array, String nombre) {
         int i = 0;
-        String result = null;
 
-        while (result == null && i < array.length) {
-            // Supongamos que la altura está representada en la posición 0 de cada subarray
-            float currentHeight = Float.parseFloat(array[i][0]);
-            if (currentHeight == height)
-                result = array[i][1]; // Supongamos que la cadena que deseas devolver está en la posición 1
+        while (i < array.length) {
+
+            String currentNombre = array[i][0];
+
+            if (currentNombre.equals(nombre)) {
+                return i;
+            }
+
             i++;
         }
-
-        return result;
+        return -1;
     }
-
-
-
-    /*
-    public static void bubble(int[] array) {
-        int i, j;
-        for (i = 1; i < array.length; i++)
-            for(j = 0; j < array.length - 1; j++)
-                if(array[j]>array[j+1])
-                    swap(array, j, j + 1);
-}
-
-     */
-
-    /*
-    public static void swap(String[] array, int i, int j){
-        String aux = array[j];
-        array[j] = array[i];
-        array[i] = aux;
-    }
-     */
-
-    /*
-    public static int search(int[] array, int num){
-        int i = 0,position=-1;
-        while(position==-1 && i<array.length){
-            if(array[i]==num)
-                position=i;
-            i++;
-        }
-        return position;
-    }
-     */
 
 }
