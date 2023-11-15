@@ -46,8 +46,6 @@ public class Ejercicio3 {
         } else {
             System.out.println("Altura encontrada: " + personas[posicion][1]);
         }
-
-
     }
 
         /*
@@ -89,6 +87,7 @@ public class Ejercicio3 {
         matriz[x][1] = matriz[y][1];
         matriz[y][1] = aux2;
     }
+
 
     private static int search(String[][] array, String nombre) {
         int i = 0;
